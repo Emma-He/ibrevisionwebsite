@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Hello!</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <!-- import the webpage's javascript file -->
+    <script src="/script.js" defer></script>
+  </head>  
+  
+  <body>
+
+    <!--Start Nav Section-->
+    
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+      <a class="navbar-brand" href="/index.html">IB Exam Review Guide</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      </div>
+    </nav>
+
+    <!--End Nav Section-->  
+
+    <!--Start Subject Section-->
+      <section id="subject" class="subject-section">
+        <div class="subject-grid">
+          <div class="row d-flex justify-content-center">
+            <div class="col-5">
+              <div class="row">
+                <div class="col">
+                  <a
+                    href="/math.html"
+                    class="button btn btn-block btn-danger p-4"
+                  >
+                    MATH HL
+                  </a>
+                </div>
+                <div class="col">
+                  <a
+                    href="/chem.html"
+                    class="button btn btn-block btn-warning p-4"
+                  >
+                    CHEMISTRY HL
+                  </a>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col">
+                  <a
+                    href="/physics.html"
+                    class="button btn btn-block btn-primary p-4"
+                  >
+                    PHYSICS SL
+                  </a>
+                </div>
+                <div class="col">
+                  <a
+                    href="/geo.html"
+                    class="button btn btn-block btn-success p-4"
+                  >
+                    GEOGRAPHY SL
+                  </a>
+                </div>
+              </div>
+              </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+
+    
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyB0bJ_7rDn2iMSOWrkhYEu8NuwrE3GnTOQ",
+        authDomain: "ib-exam-review.firebaseapp.com",
+        databaseURL: "https://ib-exam-review.firebaseio.com",
+        projectId: "ib-exam-review",
+        storageBucket: "ib-exam-review.appspot.com",
+        messagingSenderId: "87331105938",
+        appId: "1:87331105938:web:87ab6715af859915"
+      };
+      // Initialize Firebase
+      const firebaseApp = firebase.initializeApp(firebaseConfig);
+      const db = firebaseApp.firestore()
+      
+      db.collection("QA")
+        .where("Subject", "==", "Physics")
+        .get()
+        .then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+          console.log(doc.data())
+        })
+      })
+    </script>
+ 
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>

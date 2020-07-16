@@ -1,0 +1,211 @@
+<html lang="en">
+  <head>
+
+    <title>Hello!</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    
+    <!-- import the webpage's javascript file -->
+    <script src="/script.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+  </head>  
+  
+  <body>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
+      <a class="navbar-brand" href="/index.html">IB Exam Review Guide</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+      </div>
+    </nav>
+    <!--End Nav Section-->  
+   <div class="w-100 h-100" style="padding-top: 80px;">
+      <div class="header-p1">
+         <h2>
+           <a href="/physics.html" class="link-back">
+              Physics SL
+           </a>
+        </h2>
+        <h3>
+          <a class="link-back" href="/phy1.html">
+            <u>Topic 1: Measurements and Uncertainties</u>
+          </a>
+        </h3>
+      </div>
+     
+     <!--Start Question Section-->
+     
+     <section>
+       <div class="layout">
+          <h4 class="quesnumber">
+            Question 1
+          </h4>
+           <p>
+             The volume of a pyramid with base length l, base width w, and height h is given by V=lwh3. 
+             The volume of the pyramid was measured with an uncertainty of 12%, while the base length and base width were measured with an uncertainty of 4%. 
+             What is the uncertainty of the height of the pyramid?
+           </p>
+            <div class="answers">
+              <label for="multi-choice">
+                <input id="a" type="radio" name="a">2%
+              </label>
+              <label for="multi-choice">
+                <input id="b" type="radio" name="a">3%
+              </label>
+              <label for="multi-choice">
+                <input id="c" type="radio" name="a">4%
+              </label>
+              <label for="multi-choice">
+                <input id="d" type="radio" name="a">6%
+              </label>
+               <dl class="faq">
+                <dt>
+                  <button aria-expanded="false" aria-controls="faq4_desc">
+                    Show Answer
+                  </button>
+                </dt>
+                <dd>
+                  <p id="faq4_desc" class="desc">
+                    <strong>4%</strong>
+                    $$\frac{\Delta V}{V}=0.12$$
+                    $$\frac{\Delta l}{l}=\frac{\Delta w}{w}=0.04$$
+                    $$V=\frac{lwh}{3} &#8594;\frac{\Delta V}{V}=\frac{\Delta l}{l}+\frac{\Delta w}{w}+\frac{\Delta h}{h}$$
+                    $$\frac{\Delta h}{h}=\frac{\Delta V}{V}-\frac{\Delta l}{l}-\frac{\Delta w}{w}$$
+                    $$\frac{\Delta h}{h}=0.12-0.04-0.04=0.04$$
+                    $$0.014\times 100=4\%$$
+                  </p>
+                </dd>
+              </dl>
+           </div>
+         <h4 class="quesnumber">
+          Question 2
+         </h4>
+         <p>
+           A ball is thrown in the air and 5 different students are individually measuring the time it takes to fall back down using stopwatches. 
+           The times obtained by each student are the following:
+         </p>
+         <p>
+           6.2 s, 6.0 s, 6.4 s, 6.1 s, 5.8 s
+         </p>
+         <p>
+           a) What is the uncertainty of the results?
+         </p>
+           <div class="form-group">
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
+         <p>
+           b) How should the resulting time be expressed?
+         </p>
+           <div class="form-group">
+            <textarea class="form-control" id="exampleFormControlTextarea2" rows="3"></textarea>
+          </div>
+         <dl class="faq">
+            <dt>
+              <button aria-expanded="false" aria-controls="faq1_desc">
+                Show Answer
+              </button>
+            </dt>
+            <dd>
+              <p id="faq1_desc" class="desc">
+                <strong>a)±0.3s</strong>
+                The range is 6.4−5.8=0.6s and the uncertainty is half the range, so the answer is ±0.3s.
+                <br><strong>b)6.1±0.3s</strong>
+                The mean of the values obtained by the 5 students is:
+                $$\frac{6.2+6+6.4+6.1+5.8}{5}=\frac{30.5}{5}=6.1$$
+                Therefore the time should be expressed as 6.1±0.3 s.
+              </p>
+            </dd>
+          </dl>
+         <div id="app">
+           <div>
+             <div v-for="(question, index) in questions" :key="question.key">
+               <div v-if="question.Type=='Single Choice'">
+                 <h4>
+                   Question {{index +1}}
+                 </h4>
+                 <p>
+                   {{question.Q}}
+                 </p>
+                 <textarea class="form-control" rows="3"></textarea>
+                 <button class="btn btn-primary mt-3" data-toggle="collapse" data-target="#answer">
+                   Show Answer
+                 </button>
+                 <div class="collapse" id="answer">
+                   <div class="card card-body">
+                    {{question.A}}
+                   </div>
+                 </div>
+               </div>
+               <div v-if="question.Type=='Multiple Choice'">
+                 <h4>
+                   Question {{index +1}}
+                 </h4>
+                 <p>
+                   {{question.Q}}
+                 </p>
+                 <div v-for="answer in question.C">
+                   <input :name="index" type="radio">
+                   <label>
+                   {{answer}}
+                   </label>
+                 </div>
+                  <button class="btn btn-primary" data-toggle="collapse" data-target="#answer-multiple">
+                   Show Answer
+                 </button>
+                 <div class="collapse" id="answer-multiple">
+                   <div class="card card-body">
+                    {{question.A}}
+                   </div>
+                 </div>
+               </div>
+               <hr>
+             </div>
+           </div>
+         </div>
+        </div>
+     </section>
+     
+     <!--   Vue Library    -->
+     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+     <!--   Firebase and Firestore Libraries    -->
+     <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-app.js"></script>
+     <script src="https://www.gstatic.com/firebasejs/6.3.3/firebase-firestore.js"></script>
+     
+     <!--   Database    -->
+     <script src="firebase.js"></script>
+     
+     
+     <script>
+       
+      var app = new Vue ({
+        el:"#app",
+        data:{
+          message: "abc",
+          questions: []
+        },
+        created(){
+        db.collection("QA").doc("Physics").collection("Topics").get()
+        .then(querySnapshot => {
+        querySnapshot.forEach(doc => {
+        this.questions = doc.data().Questions
+        })
+      })
+      }
+      })
+     </script>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
